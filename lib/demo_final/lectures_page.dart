@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatefulWidget {
+class LecturesPage extends StatefulWidget {
 
   final String title;
 
-  const ProfilePage({Key key, this.title}) : super(key: key);
+  const LecturesPage({Key key, this.title}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => new ProfilePageState();
+  State<StatefulWidget> createState() => new LecturesPageState();
 }
 
-class ProfilePageState extends State<ProfilePage> {
+class LecturesPageState extends State<LecturesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +31,7 @@ class ProfilePageState extends State<ProfilePage> {
         onPressed: null,
         tooltip: 'Increment',
         child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 
