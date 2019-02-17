@@ -1,0 +1,65 @@
+{
+  "profile": {
+    "firstName": "Rick",
+    "lastName": "Slinkman",
+    "attending": []
+  },
+  "lectures": [
+    {
+      "id": "ad45008d-e987-4775-a605-006e17dda6f3",
+      "name": "Guest Lecture",
+      "lecturer": "Rick Slinkman",
+      "room": "Fontys 1",
+      "startsAt": "10:00"
+    },
+    {
+      "id": "c1c57834-7d6f-4172-b586-6c81f3e1a148",
+      "name": "Software Architecture",
+      "lecturer": "Uncle Bob",
+      "room": "Fontys 2",
+      "startsAt": "10:30"
+    },
+    {
+      "id": "5088ff85-1a7d-4568-9770-1430b38717db",
+      "name": "Monitoring the office plant",
+      "lecturer": "Rick Slinkman",
+      "room": "Fontys 1",
+      "startsAt": "13:00"
+    },
+    {
+      "id": "e40506b1-62ee-47c8-8d7a-9233e7f585d2",
+      "name": "Robotics 101",
+      "lecturer": "Nikola Tesla",
+      "room": "Fontys 2",
+      "startsAt": "13:00"
+    },
+    {
+      "id": "b2cda236-dfec-46b5-aef8-e1b812914313",
+      "name": "Databases",
+      "lecturer": "Arjan Groeneweg",
+      "room": "Fontys 1",
+      "startsAt": "14:30"
+    },
+    {
+      "id": "6b441173-9e0c-451f-97c3-cffe3b8e1bf4",
+      "name": "What Cloud can do for mobile developers",
+      "lecturer": "Rick Slinkman",
+      "room": "Fontys 2",
+      "startsAt": "14:30"
+    },
+    {
+      "id": "6b228558-e4f2-47e8-ab89-d416b3350e99",
+      "name": "Building the Enigma machine",
+      "lecturer": "Alan Turing",
+      "room": "Fontys 1",
+      "startsAt": "16:00"
+    },
+    {
+      "id": "91d883b6-3ac1-42ac-aadd-4ce2b95e4b33",
+      "name": "?",
+      "lecturer": "?",
+      "room": "Fontys 2",
+      "startsAt": "16:00"
+    }
+  ]
+}
