@@ -1,8 +1,7 @@
 {
   "profile": {
     "firstName": "Rick",
-    "lastName": "Slinkman",
-    "attending": []
+    "lastName": "Slinkman"
   },
   "lectures": [
     {

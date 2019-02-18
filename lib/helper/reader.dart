@@ -4,9 +4,10 @@ import 'package:fontys_schedule/helper/datamodel.dart';
 import 'dart:convert' as JSON;
 
 class DataReader {
-  
+
     Future<DataModel> readData(BuildContext context) async {
       String data = await DefaultAssetBundle.of(context).loadString(Assets.scheduleDataFile);
-      return JSON.jsonDecode(data) as DataModel;
+      Map<String, dynamic> decodedJson = JSON.jsonDecode(data);
+      return DataModel.fromJson(decodedJson);
     }
 }
