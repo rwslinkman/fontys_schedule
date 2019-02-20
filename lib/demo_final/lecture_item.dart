@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:fontys_schedule/demo_final/types.dart';
 import 'package:fontys_schedule/helper/lecture.dart';
 
 class LectureItem extends StatefulWidget {
 
   final Lecture lecture;
+  final AttendanceCallback callback;
 
-  LectureItem({@required this.lecture});
+  LectureItem({@required this.lecture, this.callback});
 
   @override
   State<StatefulWidget> createState() {
@@ -37,10 +39,13 @@ class LectureItemState extends State<LectureItem> {
           Checkbox(
             value: isAttending,
             onChanged: (_) {
+              bool newState = !isAttending;
               print("attendance changed");
               setState(() {
-                isAttending = !isAttending;
+                isAttending = newState;
+
               });
+              widget.callback(widget.lecture.id, newState);
             },
           ),
           Divider()

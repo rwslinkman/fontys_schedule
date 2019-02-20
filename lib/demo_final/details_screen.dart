@@ -13,7 +13,7 @@ class DetailsScreen extends StatelessWidget {
         appBar: AppBar(
         title: Text('Fontys Lecture Schedule'),
       ),
-      body: Text("Hello world"),
+      body: Text("Hello world: ${lecture.name}"),
     );
   }
 

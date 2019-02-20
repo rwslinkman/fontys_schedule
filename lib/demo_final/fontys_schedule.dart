@@ -62,10 +62,11 @@ class FontysScheduleState extends State<FontysSchedule> {
       appBar: AppBar(
         title: Text('Fontys Lecture Schedule'),
       ),
-      body: (activeTab == Tab.profile) ? ProfilePage(profile: data.profile) : LecturesPage(lectures: data.lectures),
+      body: (activeTab == Tab.profile)
+          ? ProfilePage(profile: data.profile)
+          : LecturesPage(lectures: data.lectures, callback: _onAttendanceChanged),
       bottomNavigationBar: _buildBottomNavigationBar(),
     );
-    
   }
 
   BottomNavigationBar _buildBottomNavigationBar() {
@@ -91,5 +92,15 @@ class FontysScheduleState extends State<FontysSchedule> {
     setState(() {
       activeTab = tab;
     });
+  }
+
+  void _onAttendanceChanged(String lectureId, bool isAttending) {
+    List<String> attending = data.profile.attending;
+    if(isAttending && !attending.contains(lectureId)) {
+      data.profile.attending.add(lectureId);
+    }
+    if(!isAttending && attending.contains(lectureId)) {
+      data.profile.attending.remove(lectureId);
+    }
   }
 }

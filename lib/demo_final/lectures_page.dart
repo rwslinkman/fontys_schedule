@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:fontys_schedule/demo_final/details_screen.dart';
 import 'package:fontys_schedule/demo_final/lecture_item.dart';
+import 'package:fontys_schedule/demo_final/types.dart';
 import 'package:fontys_schedule/helper/lecture.dart';
 
 class LecturesPage extends StatefulWidget {
 
   final List<Lecture> lectures;
+  final AttendanceCallback callback;
 
-  const LecturesPage({Key key, this.lectures}) : super(key: key);
+  const LecturesPage({Key key, this.lectures, this.callback}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => new LecturesPageState();
@@ -34,7 +36,7 @@ class LecturesPageState extends State<LecturesPage> {
         final lectureItem = lectureList[index];
         // Build tile
         return ListTile(
-          title: LectureItem(lecture: lectureItem),
+          title: LectureItem(lecture: lectureItem, callback: widget.callback),
           onTap: () {
             print("item clicked");
             _navigateToDetails(context, lectureItem);
