@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fontys_schedule/demo_final/details_screen.dart';
+import 'package:fontys_schedule/demo_final/lecture_item.dart';
 import 'package:fontys_schedule/helper/lecture.dart';
 
 class LecturesPage extends StatefulWidget {
@@ -14,16 +16,11 @@ class LecturesPage extends StatefulWidget {
 class LecturesPageState extends State<LecturesPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: _buildList()
-//      Column(
-//        mainAxisAlignment: MainAxisAlignment.center,
-//        children: <Widget>[
-//          Text(
-//            'You have pushed the button this many times:',
-//          ),
-//        ],
-//      ),
+    return Container(
+      child: Center(
+        child: _buildList()
+      ),
+      margin: EdgeInsets.only(top: 20.0)
     );
   }
 
@@ -33,11 +30,26 @@ class LecturesPageState extends State<LecturesPage> {
     return ListView.builder(
       itemCount: lectureList.length,
       itemBuilder: (BuildContext context, int index) {
-        final lecture = lectureList[index];
-
-        // TODO: Build lecture item
-        return Text(lecture.name);
+        // Grab item
+        final lectureItem = lectureList[index];
+        // Build tile
+        return ListTile(
+          title: LectureItem(lecture: lectureItem),
+          onTap: () {
+            print("item clicked");
+            _navigateToDetails(context, lectureItem);
+          },
+        );
       },
+    );
+  }
+
+  void _navigateToDetails(BuildContext context, Lecture lectureItem) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DetailsScreen(lecture: lectureItem),
+      ),
     );
   }
 }
