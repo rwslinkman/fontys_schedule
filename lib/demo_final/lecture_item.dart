@@ -14,7 +14,6 @@ class LectureItem extends StatefulWidget {
   State<StatefulWidget> createState() {
     return LectureItemState();
   }
-
 }
 
 class LectureItemState extends State<LectureItem> {
@@ -27,18 +26,13 @@ class LectureItemState extends State<LectureItem> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          _buildInfoSection(),
+          InfoSection(
+              topText: "${widget.lecture.name}",
+              bottomText: "${widget.lecture.lecturer}"
+          ),
           Checkbox(
             value: isAttending,
-            onChanged: (_) {
-              bool newState = !isAttending;
-              print("attendance changed");
-              setState(() {
-                isAttending = newState;
-
-              });
-              widget.callback(widget.lecture.id, newState);
-            },
+            onChanged: updateAttendance,
           ),
           Divider()
         ],
@@ -47,11 +41,11 @@ class LectureItemState extends State<LectureItem> {
     );
   }
 
-  InfoSection _buildInfoSection() {
-    return InfoSection(
-        topText: "${widget.lecture.name}",
-        bottomText: "${widget.lecture.lecturer}"
-    );
+  void updateAttendance(bool isChecked) {
+    print("attendance changed");
+    setState(() {
+      isAttending = isChecked;
+    });
+    widget.callback(widget.lecture.id, isChecked);
   }
-
 }
