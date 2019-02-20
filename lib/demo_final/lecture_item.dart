@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fontys_schedule/demo_final/info_section.dart';
 import 'package:fontys_schedule/demo_final/types.dart';
 import 'package:fontys_schedule/helper/lecture.dart';
 
@@ -27,15 +28,6 @@ class LectureItemState extends State<LectureItem> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           _buildInfoSection(),
-          Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: Text("${widget.lecture.startsAt}",
-              style: new TextStyle(
-                  color: Colors.black,
-                  fontSize: 16.0
-              ),
-            ),
-          ),
           Checkbox(
             value: isAttending,
             onChanged: (_) {
@@ -55,30 +47,10 @@ class LectureItemState extends State<LectureItem> {
     );
   }
 
-  Expanded _buildInfoSection() {
-    return Expanded(
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text("${widget.lecture.name}",
-              style: new TextStyle(
-                  color: Colors.black,
-                  fontSize: 19.0,
-                  fontWeight: FontWeight.bold,
-              ),
-              overflow: TextOverflow.ellipsis,
-              softWrap: false,
-              maxLines: 1,
-            ),
-            Text("${widget.lecture.lecturer} - ${widget.lecture.room}",
-              style: new TextStyle(
-                  color: Colors.black,
-                  fontSize: 16.0
-              ),
-            ),
-          ]
-      ),
+  InfoSection _buildInfoSection() {
+    return InfoSection(
+        topText: "${widget.lecture.name}",
+        bottomText: "${widget.lecture.lecturer}"
     );
   }
 
