@@ -7,7 +7,7 @@ import 'package:fontys_schedule/helper/lecture.dart';
 class LecturesPage extends StatefulWidget {
 
   final List<Lecture> lectures;
-  final AttendanceCallback callback;
+  final Function(String, bool) callback;
 
   const LecturesPage({Key key, this.lectures, this.callback}) : super(key: key);
 

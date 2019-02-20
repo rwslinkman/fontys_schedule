@@ -95,12 +95,15 @@ class FontysScheduleState extends State<FontysSchedule> {
   }
 
   void _onAttendanceChanged(String lectureId, bool isAttending) {
-    List<String> attending = data.profile.attending;
-    if(isAttending && !attending.contains(lectureId)) {
-      data.profile.attending.add(lectureId);
-    }
-    if(!isAttending && attending.contains(lectureId)) {
-      data.profile.attending.remove(lectureId);
-    }
+    setState(() {
+      List<String> attending = data.profile.attending;
+      if(isAttending && !attending.contains(lectureId)) {
+        data.profile.attending.add(lectureId);
+      }
+      if(!isAttending && attending.contains(lectureId)) {
+        data.profile.attending.remove(lectureId);
+      }
+      print(data.profile.attending);
+    });
   }
 }

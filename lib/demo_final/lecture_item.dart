@@ -6,7 +6,7 @@ import 'package:fontys_schedule/helper/lecture.dart';
 class LectureItem extends StatefulWidget {
 
   final Lecture lecture;
-  final AttendanceCallback callback;
+  final Function(String, bool) callback;
 
   LectureItem({@required this.lecture, this.callback});
 

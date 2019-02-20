@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:fontys_schedule/assets.dart';
+import 'package:fontys_schedule/demo_final/details_screen.dart';
+import 'package:fontys_schedule/demo_final/info_section.dart';
+import 'package:fontys_schedule/helper/lecture.dart';
 import 'package:fontys_schedule/helper/profile.dart';
 
 class ProfilePage extends StatefulWidget {
 
   final Profile profile;
+  final List<Lecture> lectures;
 
-  const ProfilePage({Key key, @required this.profile }) : super(key: key);
+  const ProfilePage({Key key, @required this.profile, this.lectures }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => new ProfilePageState();
@@ -16,31 +20,121 @@ class ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    return buildPage();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Image(
+            image: AssetImage(Assets.fontysLogoImage)
+          ),
+        ),
+        _buildTitle(),
+        Divider(
+            color: Colors.black
+        ),
+        _buildProfileRow(),
+        Divider(
+            color: Colors.black
+        ),
+        _buildAttendingTitle(),
+//        _buildLectureNamesList()
+      ],
+    );
   }
 
-  Center buildPage() {
-    return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
+  Column _buildAttendingTitle() {
+    return Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Image(
-              image: AssetImage(Assets.fontysLogoImage)
+            padding: const EdgeInsets.all(10.0),
+            child: Text("Lectures you are attending",
+              style: new TextStyle(
+                color: Colors.black,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold
+              ),
+              textAlign: TextAlign.start,
             ),
           ),
-          Text(
-            'Welcome, ${widget.profile.firstName}',
+        ]
+      );
+  }
+
+  Row _buildProfileRow() {
+    return Row(
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Icon(Icons.person),
+        ),
+        InfoSection(
+          topText: "${widget.profile.firstName} ${widget.profile.lastName}",
+          bottomText: "You",
+        )
+      ],
+    );
+  }
+
+  Widget _buildTitle() {
+    return Center(
+      child: Container(
+        child: Text("Welcome, ${widget.profile.firstName}",
+          style: new TextStyle(
+              color: Colors.black,
+              fontSize: 24.0,
+              fontWeight: FontWeight.bold
           ),
-          RaisedButton(
-            onPressed: () => null,
-            child: Text("Open schedule"),
-          )
-        ],
+        ),
+        margin: EdgeInsets.only(left: 8.0, right: 8.0),
       ),
     );
   }
 
+  Widget _buildLectureNamesList() {
+    List<String> attendingLectureIds = widget.profile.attending;
+    if(attendingLectureIds.isEmpty) {
+      // Nothing to display
+      return _buildEmptyAttendanceText();
+    }
+
+    List<Lecture> attendingLectures = [];
+    return ListView.builder(
+      itemCount: attendingLectures.length,
+      itemBuilder: (BuildContext context, int index) {
+        final attLecture = attendingLectures[index];
+
+        return ListTile(
+          title: Text(attLecture.name),
+          onTap: (attendingLectures.isEmpty) ? null : () {
+            print("attended lecture clicked");
+            _navigateToDetails(context, attLecture);
+          },
+        );
+      },
+    );
+  }
+
+  Center _buildEmptyAttendanceText() {
+    return Center(
+      child: Text("Not attending any lectures",
+        style: new TextStyle(
+            color: Colors.black,
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold
+        ),
+        textAlign: TextAlign.start,
+      ),
+    );
+  }
+
+  void _navigateToDetails(BuildContext context, Lecture lectureItem) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DetailsScreen(lecture: lectureItem),
+      ),
+    );
+  }
 }
