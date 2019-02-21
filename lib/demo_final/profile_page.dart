@@ -39,7 +39,7 @@ class ProfilePageState extends State<ProfilePage> {
             color: Colors.black
         ),
         _buildAttendingTitle(),
-//        _buildLectureNamesList()
+        _buildLectureNamesList()
       ],
     );
   }
@@ -99,8 +99,10 @@ class ProfilePageState extends State<ProfilePage> {
       return _buildEmptyAttendanceText();
     }
 
-    List<Lecture> attendingLectures = [];
+    List<Lecture> attendingLectures = filterLectures(widget.lectures, attendingLectureIds);
     return ListView.builder(
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
       itemCount: attendingLectures.length,
       itemBuilder: (BuildContext context, int index) {
         final attLecture = attendingLectures[index];
@@ -136,5 +138,15 @@ class ProfilePageState extends State<ProfilePage> {
         builder: (context) => DetailsScreen(lecture: lectureItem),
       ),
     );
+  }
+
+  filterLectures(List<Lecture> allLectures, List<String> attendingIds) {
+    List<Lecture> attending = [];
+    for(Lecture lect in allLectures) {
+      if(attendingIds.contains(lect.id)) {
+        attending.add(lect);
+      }
+    }
+    return attending;
   }
 }

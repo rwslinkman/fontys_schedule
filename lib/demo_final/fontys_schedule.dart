@@ -63,7 +63,7 @@ class FontysScheduleState extends State<FontysSchedule> {
         title: Text('Fontys Lecture Schedule'),
       ),
       body: (activeTab == Tab.profile)
-          ? ProfilePage(profile: data.profile)
+          ? ProfilePage(profile: data.profile, lectures: data.lectures)
           : LecturesPage(lectures: data.lectures, callback: _onAttendanceChanged),
       bottomNavigationBar: _buildBottomNavigationBar(),
     );

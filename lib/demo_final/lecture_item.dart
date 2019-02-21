@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fontys_schedule/demo_final/info_section.dart';
-import 'package:fontys_schedule/demo_final/types.dart';
 import 'package:fontys_schedule/helper/lecture.dart';
 
 class LectureItem extends StatefulWidget {
