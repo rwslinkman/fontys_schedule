@@ -108,13 +108,27 @@ class ProfilePageState extends State<ProfilePage> {
         final attLecture = attendingLectures[index];
 
         return ListTile(
-          title: Text(attLecture.name),
+          title: _buildAttendingItem(attLecture),
           onTap: (attendingLectures.isEmpty) ? null : () {
             print("attended lecture clicked");
             _navigateToDetails(context, attLecture);
           },
         );
       },
+    );
+  }
+
+  Widget _buildAttendingItem(Lecture attLecture) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Text(attLecture.name),
+        Padding(
+          padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+          child: Icon(Icons.info),
+        ),
+
+      ],
     );
   }
 

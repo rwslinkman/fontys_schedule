@@ -103,7 +103,6 @@ class FontysScheduleState extends State<FontysSchedule> {
       if(!isAttending && attending.contains(lectureId)) {
         data.profile.attending.remove(lectureId);
       }
-      print(data.profile.attending);
     });
   }
 }
