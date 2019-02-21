@@ -18,13 +18,11 @@ class DetailsScreen extends StatelessWidget {
           child: Center(
             child: Column(
               children: <Widget>[
-                _buildTitle(),
-                Divider(
-                    color: Colors.black
-                ),
-                _buildDataRow(Icons.star, this.lecture.lecturer, "Lecturer"),
-                _buildDataRow(Icons.alarm, this.lecture.startsAt, "Starting time"),
-                _buildDataRow(Icons.home, this.lecture.room, "Room")
+                _buildTitle(context),
+                Divider(),
+                _buildDataRow(context, Icons.star, this.lecture.lecturer, "Lecturer"),
+                _buildDataRow(context, Icons.alarm, this.lecture.startsAt, "Starting time"),
+                _buildDataRow(context, Icons.home, this.lecture.room, "Room")
               ],
             ),
           ),
@@ -33,7 +31,7 @@ class DetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDataRow(IconData icon, String topData, String bottomData) {
+  Widget _buildDataRow(BuildContext context, IconData icon, String topData, String bottomData) {
     return Container(
       child: Row(
         children: <Widget>[
@@ -51,14 +49,10 @@ class DetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTitle() {
+  Widget _buildTitle(BuildContext context) {
     return Container(
       child: Text("${lecture.name}",
-        style: new TextStyle(
-          color: Colors.black,
-          fontSize: 24.0,
-          fontWeight: FontWeight.bold
-        ),
+        style: Theme.of(context).textTheme.headline,
       ),
       margin: EdgeInsets.only(left: 8.0, right: 8.0),
     );

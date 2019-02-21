@@ -14,20 +14,13 @@ class InfoSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(topText,
-              style: new TextStyle(
-                color: Colors.black,
-                fontSize: 19.0,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.title,
               overflow: TextOverflow.ellipsis,
               softWrap: false,
               maxLines: 1,
             ),
             Text(bottomText,
-              style: new TextStyle(
-                  color: Colors.black,
-                  fontSize: 16.0
-              ),
+              style: Theme.of(context).textTheme.subtitle,
             ),
           ]
       ),

@@ -33,13 +33,9 @@ class ProfilePageState extends State<ProfilePage> {
             ),
           ),
           _buildTitle(),
-          Divider(
-              color: Colors.black
-          ),
+          Divider(),
           _buildProfileRow(),
-          Divider(
-              color: Colors.black
-          ),
+          Divider(),
           _buildAttendingTitle(),
           _buildLectureNamesList()
         ],
@@ -53,11 +49,7 @@ class ProfilePageState extends State<ProfilePage> {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Text("Lectures you are attending",
-              style: new TextStyle(
-                color: Colors.black,
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold
-              ),
+              style: Theme.of(context).textTheme.title,
               textAlign: TextAlign.start,
             ),
           ),
@@ -70,7 +62,9 @@ class ProfilePageState extends State<ProfilePage> {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Icon(Icons.person),
+          child: Icon(Icons.person,
+            color: Theme.of(context).primaryColor
+          ),
         ),
         InfoSection(
           topText: "${widget.profile.firstName} ${widget.profile.lastName}",
@@ -84,11 +78,7 @@ class ProfilePageState extends State<ProfilePage> {
     return Center(
       child: Container(
         child: Text("Welcome, ${widget.profile.firstName}!",
-          style: new TextStyle(
-              color: Colors.black,
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold
-          ),
+          style: Theme.of(context).textTheme.headline,
         ),
         margin: EdgeInsets.only(left: 8.0, right: 8.0),
       ),
@@ -125,10 +115,17 @@ class ProfilePageState extends State<ProfilePage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Text(attLecture.name),
+        SizedBox(
+          width: 250.0,
+          child: Text(attLecture.name,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
         Padding(
           padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-          child: Icon(Icons.info),
+          child: Icon(Icons.info,
+            color: Theme.of(context).primaryColor
+          ),
         ),
 
       ],

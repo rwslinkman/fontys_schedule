@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fontys_schedule/assets.dart';
 import 'package:fontys_schedule/demo_final/lectures_page.dart';
 import 'package:fontys_schedule/demo_final/profile_page.dart';
 import 'package:fontys_schedule/helper/datamodel.dart';
@@ -40,7 +41,29 @@ class FontysScheduleState extends State<FontysSchedule> {
     return MaterialApp(
       title: 'Fontys Lectures',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepPurple,
+        primaryColor: Assets.fontysPurple,
+        canvasColor: Colors.white,
+        textTheme: TextTheme(
+          headline: TextStyle(
+              color: Assets.fontysPurple,
+              fontSize: 24.0,
+              fontWeight: FontWeight.bold
+          ),
+          title: TextStyle(
+            color: Colors.black,
+            fontSize: 19.0,
+            fontWeight: FontWeight.bold,
+          ),
+          subtitle: TextStyle(
+              color: Colors.black,
+              fontSize: 16.0
+          )
+        ),
+        iconTheme: IconThemeData(
+          color: Assets.fontysPurple
+        ),
+        dividerColor: Assets.fontysPurple
       ),
       home: (isLoading) ? _buildLoading() : _buildScreen(),
     );

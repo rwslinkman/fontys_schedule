@@ -21,7 +21,7 @@ class LecturesPageState extends State<LecturesPage> {
       child: Center(
         child: _buildList()
       ),
-      margin: EdgeInsets.only(top: 20.0)
+      margin: EdgeInsets.only(top: 20.0),
     );
   }
 
