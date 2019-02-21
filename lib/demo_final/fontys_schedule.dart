@@ -87,7 +87,7 @@ class FontysScheduleState extends State<FontysSchedule> {
       ),
       body: (activeTab == Tab.profile)
           ? ProfilePage(profile: data.profile, lectures: data.lectures)
-          : LecturesPage(lectures: data.lectures, callback: _onAttendanceChanged),
+          : LecturesPage(lectures: data.lectures, attendingIds: data.profile.attending, callback: _onAttendanceChanged),
       bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }

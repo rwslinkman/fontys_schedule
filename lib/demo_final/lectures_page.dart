@@ -6,9 +6,10 @@ import 'package:fontys_schedule/helper/lecture.dart';
 class LecturesPage extends StatefulWidget {
 
   final List<Lecture> lectures;
+  final List<String> attendingIds;
   final Function(String, bool) callback;
 
-  const LecturesPage({Key key, this.lectures, this.callback}) : super(key: key);
+  const LecturesPage({Key key, this.lectures, this.attendingIds, this.callback}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => new LecturesPageState();
@@ -33,9 +34,14 @@ class LecturesPageState extends State<LecturesPage> {
       itemBuilder: (BuildContext context, int index) {
         // Grab item
         final lectureItem = lectureList[index];
+        final bool checkInitially = widget.attendingIds.contains(lectureItem.id);
         // Build tile
         return ListTile(
-          title: LectureItem(lecture: lectureItem, callback: widget.callback),
+          title: LectureItem(
+              lecture: lectureItem,
+              initialCheckState: checkInitially,
+              callback: widget.callback
+          ),
           onTap: () {
             print("item clicked");
             _navigateToDetails(context, lectureItem);

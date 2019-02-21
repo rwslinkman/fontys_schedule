@@ -6,8 +6,9 @@ class LectureItem extends StatefulWidget {
 
   final Lecture lecture;
   final Function(String, bool) callback;
+  final bool initialCheckState;
 
-  LectureItem({@required this.lecture, this.callback});
+  LectureItem({@required this.lecture, this.initialCheckState, this.callback});
 
   @override
   State<StatefulWidget> createState() {
@@ -17,10 +18,12 @@ class LectureItem extends StatefulWidget {
 
 class LectureItemState extends State<LectureItem> {
 
-  bool isAttending = false;
+  bool isAttending;
 
   @override
   Widget build(BuildContext context) {
+    isAttending = widget.initialCheckState;
+
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
