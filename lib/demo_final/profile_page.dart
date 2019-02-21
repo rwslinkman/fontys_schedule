@@ -20,27 +20,30 @@ class ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Image(
-            image: AssetImage(Assets.fontysLogoImage)
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Image(
+              image: AssetImage(Assets.fontysLogoImage)
+            ),
           ),
-        ),
-        _buildTitle(),
-        Divider(
-            color: Colors.black
-        ),
-        _buildProfileRow(),
-        Divider(
-            color: Colors.black
-        ),
-        _buildAttendingTitle(),
-        _buildLectureNamesList()
-      ],
+          _buildTitle(),
+          Divider(
+              color: Colors.black
+          ),
+          _buildProfileRow(),
+          Divider(
+              color: Colors.black
+          ),
+          _buildAttendingTitle(),
+          _buildLectureNamesList()
+        ],
+      ),
     );
   }
 
@@ -80,7 +83,7 @@ class ProfilePageState extends State<ProfilePage> {
   Widget _buildTitle() {
     return Center(
       child: Container(
-        child: Text("Welcome, ${widget.profile.firstName}",
+        child: Text("Welcome, ${widget.profile.firstName}!",
           style: new TextStyle(
               color: Colors.black,
               fontSize: 24.0,
